@@ -7,7 +7,7 @@ spec:
   replicas: 2
   selector:
     matchLabels: 
-    app: custom-cowsay-app
+      app: custom-cowsay-app
   template:
     metadata:
       labels:
@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
       - name: custom-cowsay-app
-        image: custom-cowsay:latest
+        image: 10.99.131.250:5000/custom-cowsay:latest
         ports:
         - containerPort: 8080
-          resources:
-            request:
-              memory: "64Mi"
-              cpu: "50m"
-            limits:
-              memory: "128Mi"
-              cpu: "100m"
-              
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+            
