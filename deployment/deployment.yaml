@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-cowsay-app
+  namespace: fun
+spec:
+  replicas: 2
+  selector:
+    matchLabels: 
+    app: custom-cowsay-app
+  template:
+    metadata:
+      labels:
+        app: custom-cowsay-app
+    spec:
+      containers:
+      - name: custom-cowsay-app
+        image: custom-cowsay:latest
+        ports:
+        - containerPort: 8080
+          resources:
+            request:
+              memory: "64Mi"
+              cpu: "50m"
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+              
